@@ -26,6 +26,7 @@ export default function Login() {
           }).then((data)=>{
             if(data.error===null)
             {
+                localStorage.setItem("userName",email);
                 navigate('/chat')
                 dispatch({
                     type:"SET_USER",

@@ -19,6 +19,12 @@ export default function Chat() {
     window.addEventListener("resize", () => {
       setHeight(window.innerHeight - 205);
     });
+    dispatch({
+      type:"SET_USER",
+      username:localStorage.getItem("userName")
+  
+  });
+  
   }, []);
 
   const myMessage={
