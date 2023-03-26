@@ -1,13 +1,18 @@
-export const initialState = {
-    basket: [],
-    user: {name:" ",email:" "}
-  };
+import { act } from "react-dom/test-utils";
+import { supabase } from "../Supabase/Config";
 
-export const supabase ={
- supabaseUrl: "https://tolfqltgkpxssndwbypv.supabase.co",
-supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbGZxbHRna3B4c3NuZHdieXB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzk2NDIxNzAsImV4cCI6MTk5NTIxODE3MH0.t95wKdPSVbO1rZ6UDef2UyUyR5P6m4faFle0rvgDqRw",
-supabase: createClient("https://tolfqltgkpxssndwbypv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbGZxbHRna3B4c3NuZHdieXB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzk2NDIxNzAsImV4cCI6MTk5NTIxODE3MH0.t95wKdPSVbO1rZ6UDef2UyUyR5P6m4faFle0rvgDqRw")
-}
+export const initialState = {
+   username:" ",
+   messages:[
+   ],
+   error:"",
+   loadingInitial:false,
+   routeHash:"",
+   isOnBottom:false,
+   newIncomingMessageTrigger:null,
+   messageId:0
+
+  };
 
   const reducer = (state, action) => {
     console.log(action);
@@ -16,8 +21,39 @@ supabase: createClient("https://tolfqltgkpxssndwbypv.supabase.co", "eyJhbGciOiJI
           case "SET_USER":
             return {
               ...state,
-              user: action.user
+              username: action.username
             }
+
+          case "SET_ERROR":
+            return {
+
+              ...state,
+              error:action.error
+            }
+
+            case "SET_MESSAGES":
+              return {
+
+                ...state,
+                messages:action.messages
+              }
+            
+            case "SET_INCOMING_MESSAGE_TRIGGER":
+              return {
+                ...state,
+                newIncomingMessageTrigger:action.payload
+
+              }
+
+              case "SET_MESSAGE_ID":
+                return {
+                  ...state,
+                  messageId:action.value
+                }
+
+
+
+
       
      
       default:

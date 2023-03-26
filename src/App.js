@@ -8,8 +8,10 @@ import {
 import Login from "./components/Login/Login"
 import SignUp from './components/SignUp/SignUp';
 import Home from './components/Home/Home'
+import {useStateValue} from "./components/ContextApi/StateProvider"
 import Chat from './components/Chat/Chat';
 function App() {
+  const [{}, dispatch] = useStateValue();
   return (
      <BrowserRouter>
   

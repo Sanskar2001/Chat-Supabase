@@ -2,6 +2,7 @@ import './Login.css'
 import { Link, useNavigate } from "react-router-dom";
 import { loginWithEmailAndPassword } from '../Supabase/Config';
 import { useState } from 'react';
+import { useStateValue } from "../ContextApi/StateProvider"
 import { supabase } from '../Supabase/Config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,6 +10,9 @@ export default function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [ {username} ,dispatch] =
+    useStateValue();
     function handleClick() {
         navigate("/signUp");
     }
@@ -21,7 +25,15 @@ export default function Login() {
             password: password
           }).then((data)=>{
             if(data.error===null)
-            navigate('/chat')
+            {
+                navigate('/chat')
+                dispatch({
+                    type:"SET_USER",
+                    username:data.data.user.email
+                
+                });
+            }
+           
             else
            {
             toast.error(data.error.message, {

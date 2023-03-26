@@ -43,13 +43,13 @@ export default function Message({ message, isYou }) {
           color="gray.500"
           mb="2"
         >
-          <span>{message.username} </span>
-          {message.is_authenticated && (
+          <span>{message.userEmail} </span>
+         
             <MdVerified
               color="#1d9bf0"
               style={{ display: "inline", marginRight: "5px" }}
             />
-          )}
+       
         </GridItem>
         <GridItem
           justifySelf="start"
@@ -58,7 +58,7 @@ export default function Message({ message, isYou }) {
           fontSize="md"
           fontFamily="Montserrat, sans-serif"
         >
-          {message.text}
+          {message.messageContent}
         </GridItem>
         <GridItem
           color="gray"
@@ -66,7 +66,7 @@ export default function Message({ message, isYou }) {
           justifySelf="end"
           alignSelf="end"
         >
-          {dayjs(message.timestamp).fromNow()}
+          {dayjs(message.created_at).fromNow()}
         </GridItem>
       </Grid>
     </Box>

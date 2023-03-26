@@ -2,6 +2,8 @@ import '../Login/Login.css'
 import { Link, useNavigate } from "react-router-dom";
 import {signUpWithEmailAndPassword} from "../Supabase/Config";
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function SignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,6 +18,18 @@ export default function SignUp() {
 
         console.log(" "+email+" "+password);
         signUpWithEmailAndPassword(email, password);
+        toast.success('Verify Your Email via link sent', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+
+
 
             // .then(data => {
             //    navigate('/')
@@ -32,7 +46,20 @@ export default function SignUp() {
                     src='/logo.png'
                 />
           
-
+          <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+        rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="light"
+        />
+{/* Same as */}
+<ToastContainer/>
             <div className='login__container'>
                 <h1>Sign-Up</h1>
 

@@ -1,7 +1,6 @@
 
-
 .login {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -29,6 +28,7 @@
 
 .login__container > h1 {
     font-weight: 500;
+    font: 1 rem "PT Sans",sans-serif;
     margin-bottom: 20px;
   }
 
@@ -57,6 +57,8 @@
     margin-top: 10px;
     color: azure;
     font-size: large;
+    font-weight: bold;
+    font: 1 rem "PT Sans",sans-serif;
     border-color: #a88734 #9c7e31 #846a29;
   }
 
@@ -67,5 +69,7 @@
     border: 1px solid;
     margin-top: 10px;
     font-size: large;
+    font: 1 rem "PT Sans",sans-serif;
+    font-weight: bold;
     border-color: darkgray;
   }
